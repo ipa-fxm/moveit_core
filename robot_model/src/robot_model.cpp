@@ -704,6 +704,10 @@ robot_model::JointModel* robot_model::RobotModel::constructJointModel(const urdf
           result = new PlanarJointModel(vjoints[i].name_);
         else if (vjoints[i].type_ == "floating")
           result = new FloatingJointModel(vjoints[i].name_);
+        else if (vjoints[i].type_ == "revolute")
+          result = new RevoluteJointModel(vjoints[i].name_);
+		else if (vjoints[i].type_ == "prismatic")
+          result = new PrismaticJointModel(vjoints[i].name_);
         if (result)
         {
           // for fixed frames we still use the robot root link
