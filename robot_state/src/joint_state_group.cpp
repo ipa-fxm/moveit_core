@@ -945,6 +945,7 @@ double robot_state::JointStateGroup::computeCartesianPath(std::vector<RobotState
     for (std::size_t i = 0 ; i < dist_vector.size() ; ++i)
       if (dist_vector[i] > thres)
       {
+        logWarn("JointSpaceJump detected! %f > %f", dist_vector[i], thres);
         logDebug("Truncating Cartesian path due to detected jump in joint-space distance");
         last_valid_percentage = (double)i / (double)steps;
         traj.resize(i);
